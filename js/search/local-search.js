@@ -103,7 +103,13 @@ class LocalSearch {
 
   getResultItems (keywords) {
     const resultItems = []
-    this.datas.forEach(({ title, content, url }) => {
+    // 源代码START
+    // this.datas.forEach(({ title, content, url }) => {
+    // 源代码END
+
+    // 魔改代码START
+    this.datas.forEach(({ title, content, url, categories, tags }) => {
+      // 魔改代码END
       // The number of different keywords included in the article.
       const [indexOfTitle, keysOfTitle] = this.getIndexByWord(keywords, title)
       const [indexOfContent, keysOfContent] = this.getIndexByWord(keywords, content)
@@ -155,6 +161,12 @@ class LocalSearch {
         resultItem += `<div class="local-search-hit-item"><a href="${url.href}"><span class="search-result-title">${title}</span>`
       }
 
+      // 魔改代码START
+      tags.forEach(tag => {
+        resultItem += `<a class="search-result-tag" href="${GLOBAL_CONFIG.root + 'tags/' + tag + '/'}">${(GLOBAL_CONFIG.emoji && GLOBAL_CONFIG.emoji.tags && GLOBAL_CONFIG.emoji.tags[tag] || '') + tag}</a>`
+      })
+      // 魔改代码END
+
       slicesOfContent.forEach(slice => {
         resultItem += `<p class="search-result">${this.highlightKeyword(content, slice)}...</p></a>`
       })
@@ -181,8 +193,12 @@ class LocalSearch {
           ? [...new DOMParser().parseFromString(res, 'text/xml').querySelectorAll('entry')].map(element => ({
               title: element.querySelector('title').textContent,
               content: element.querySelector('content').textContent,
-              url: element.querySelector('url').textContent
-            }))
+              url: element.querySelector('url').textContent,
+              // 魔改代码START
+              categories: [...element.querySelectorAll('category')].map(category => { return category.textContent.trim() }),
+              tags: [...element.querySelectorAll('tag')].map(tag => { return tag.textContent.trim() }),
+              // 魔改代码END
+          }))
           : JSON.parse(res)
         // Only match articles with non-empty titles
         this.datas = this.datas.filter(data => data.title).map(data => {
@@ -357,4 +373,19 @@ window.addEventListener('load', () => {
     localSearch.highlightSearchWords(document.getElementById('article-container'))
     searchClickFn()
   })
+
+  // 魔改代码START
+  // 右键搜索
+  document.getElementById('menu-search').addEventListener('click', function () {
+    openSearch()
+    setTimeout(() => {
+      let $input = document.querySelector('#local-search-input input')
+      let event = document.createEvent("HTMLEvents");
+      event.initEvent("input", false, false);
+      $input.value = rightMenuContext.text
+      $input.dispatchEvent(event)
+    }, 100)
+  })
+  // 魔改代码END
+
 })

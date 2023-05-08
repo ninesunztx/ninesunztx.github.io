@@ -10,18 +10,18 @@ if (document.getElementById('comment-button')) document.getElementById('comment-
 if (document.getElementById('barrage-btn')) document.getElementById('barrage-btn').style.display = document.getElementById('post-comment') ? 'block' : 'none'
 
 document.addEventListener('keydown', function (event) {
-    if (event.keyCode == 27) { // ESC
-        try {
-            document.getElementById('rightside')?.classList.add('hidden')
-            document.getElementById('rightside-mask')?.classList.add('hidden')
-            document.getElementById('fc-overlay')?.classList.add('hidden')
-            document.getElementById('fc-overshow')?.classList.add('hidden')
-            // eurkon.exitFullScreen()
-        }
-        catch (error) {
-            console.log(error)
-        }
+  if (event.keyCode == 27) { // ESC
+    try {
+      document.getElementById('rightside')?.classList.add('hidden')
+      document.getElementById('rightside-mask')?.classList.add('hidden')
+      document.getElementById('fc-overlay')?.classList.add('hidden')
+      document.getElementById('fc-overshow')?.classList.add('hidden')
+      // eurkon.exitFullScreen()
     }
+    catch (error) {
+      console.log(error)
+    }
+  }
 });
 
 // 页面滚动百分比
@@ -30,3 +30,4 @@ document.addEventListener('keydown', function (event) {
 //   let clientH = window.innerHeight || document.documentElement.clientHeight // 可视高
 //   document.querySelector('#nav #hotkey #top-button a.site-page i').dataset.percent = ((document.body.scrollTop || document.documentElement.scrollTop) / (totalH - clientH) * 100).toFixed(0)
 // })
+

@@ -299,11 +299,21 @@ document.addEventListener('DOMContentLoaded', function () {
   const rightsideScrollPercent = currentTop => {
     const perNum = btf.getScrollPercent(currentTop, document.body)
     const $goUp = document.getElementById('go-up')
+    // 魔改代码START
+    const $topButton = document.getElementById('top-button')
+    // 魔改代码END
     if (perNum < 95) {
       $goUp.classList.add('show-percent')
       $goUp.querySelector('.scroll-percent').textContent = perNum
+      // 魔改代码START
+      $topButton.classList.add('show-percent')
+      $topButton.querySelector('.scroll-percent').textContent = perNum
+      // 魔改代码END
     } else {
       $goUp.classList.remove('show-percent')
+      // 魔改代码START
+      $topButton.classList.remove('show-percent')
+      // 魔改代码END
     }
   }
 
