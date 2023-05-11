@@ -1,8 +1,8 @@
 
-    var posts=["2023/05/08/hello-world/"];
+    var posts=["posts/58deec8b.html","posts/97540f25.html","posts/4ed15c0b.html","posts/4a17b156.html"];
     function toRandomPost(){pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);};
 
-    var friend_link_list=[{"name":"Hexo","link":"https://hexo.io/zh-cn/","avatar":"https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg","descr":"快速、简单且强大的网志框架","siteshot":"https://source.fomal.cc/siteshot/hexo.io.jpg"},{"name":"Fomalhaut🥝","link":"https://fomal.cc/","avatar":"/assets/head.jpg","descr":"Future is now 🍭🍭🍭","siteshot":"https://source.fomal.cc/siteshot/www.fomal.cn.jpg"}];
+    var friend_link_list=[{"name":"Hexo","hundredSuffix":"","link":"https://hexo.io/zh-tw/","avatar":"https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg","descr":"快速、简单且强大的网站框架"},{"name":"anzhiyu主题","link":"https://anzhiy.cn/","avatar":"https://img02.anzhiy.cn/adminuploads/1/2022/09/15/63232b7d91d22.jpg","descr":"生活明朗，万物可爱","siteshot":"https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/anzhiy.cn.jpg"},{"name":"安知鱼","hundredSuffix":"","link":"https://anzhiy.cn/","avatar":"https://img02.anzhiy.cn/adminuploads/1/2022/09/15/63232b7d91d22.jpg","descr":"生活明朗，万物可爱","siteshot":"https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/anzhiy.cn.jpg"},{"name":"安知鱼","hundredSuffix":"","link":"https://anzhiy.cn/","avatar":"https://img02.anzhiy.cn/adminuploads/1/2022/09/15/63232b7d91d22.jpg","descr":"生活明朗，万物可爱"},{"name":"Z呵呵","hundredSuffix":"","link":"https://www.zaughter.cn/","avatar":"http://blog-zaughter-01.oss-cn-hangzhou.aliyuncs.com/config/899f87f73ccf3149fa3e9506faa0efaf.png","descr":"喜欢摸索的小白"}];
     var refreshNum = 1
     var footerRandomFriendsBtn = document.getElementById("footer-random-friends-btn");
     function addFriendLinksInFooter() {
